@@ -2,6 +2,8 @@ package com.HJh.test.oop.zifuchuan;
 //字符串也是一个类，在Java.lang包下，不需要导包
 //所以可以通过new关键字创建对象
 
+import java.util.Arrays;
+
 //直接赋值和new关键字创建字符串对象在内存中存储方式不一样
 //第一次直接赋值时会在堆内存中创建一个StringTable(串池)，下次直接赋值时，会从StringTable中查找，
 //如果找到，则直接从StringTable中获取对象，如果没有找到，则创建对象，并放入StringTable中，所以会有一个复用功能
@@ -34,6 +36,16 @@ public class test {
         char[] chs = {'a','b','c','d','e'};
         String s3 = new String(chs);
         System.out.println(s3); // abcde
+
+int[] arr = {1, 2, 3};
+String str = Arrays.toString(arr);
+System.out.println(str);
+// 输出：[1, 2, 3]
+
+
+
+
+
 //5.new+有参构造（字节数组）
 //ASCII码表
         byte[] bytes ={97,98,99,100,101};
