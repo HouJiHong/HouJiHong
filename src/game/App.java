@@ -1,2 +1,10 @@
-package game;public class App {
+package game;
+
+import game.ui.Login;
+
+public class App {
+    public static void main(String[] args) {
+        Login login = new Login();
+        login.start();
+    }
 }
