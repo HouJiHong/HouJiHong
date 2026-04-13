@@ -1,5 +1,5 @@
 package com.HJh.test.oop;
-//this 关键字就是使用成员变量
+//this 关键字，是一个变量，存储当前调用对象的地址
 public class Dog {
     private String name;
     private int age;
