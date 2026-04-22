@@ -20,6 +20,7 @@ public class test {
         list.add(1);
         list.add(2);
         list.add(3);
+        System.out.println( list);
         System.out.print("[");
         for (int i = 0; i < list.size(); i++) {
             //获取集合元素，因为是Integer包装类，所以用Integer接受变量

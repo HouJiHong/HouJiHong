@@ -3,9 +3,11 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 //静态方法引用
-//类名::静态方法
+
 //使用场景:
 //如果某个Lambda表达式里只是调用一个静态方法，并且"→"前后参数的形式一致，就可以使用静态方法引用。
+
+//类名::静态方法
 
 public class test {
     //对数组进行排序
