@@ -1,10 +1,10 @@
 package com.HJh.test.oop.zifuchuan.changyong;
 //String类当中常见的方法：
-//      比较          equals    equalsIgnoreCase
-//      长度          length
-//      获取单个字符   charAt
-//      截取          substring
-//      替换          replace
+//      比较          equals    equalsIgnoreCase      返回值类型：boolean
+//      长度          length                          返回值类型：int
+//      获取单个字符   charAt                         返回值类型：char
+//      截取          substring                       返回值类型：String
+//      替换          replace                         返回值：String
 
 
 //      是否包含       contains

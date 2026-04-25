@@ -4,7 +4,9 @@ public class test {
     public static void main(String[] args) {
         //假设有一个购物车，需要支持多种支付方式（微信支付、支付宝、银行卡）。
         ShoppingCart cart = new ShoppingCart();
-        cart.setPaymentStrategy((amount) ->System.out.println("使用微信支付 " + amount + " 元"));
+        //cart.setPaymentStrategy((amount) ->System.out.println("使用微信支付 " + amount + " 元"));
+        cart.setPaymentStrategy(PaymentStrategy::show);
+
 
 
 
@@ -19,6 +21,9 @@ public class test {
 @FunctionalInterface
 interface PaymentStrategy {
     void pay(int amount);
+    public static void show(int amount){
+        System.out.println("使用微信支付 " + amount + " 元");
+    }
 }
 
 //实现类
