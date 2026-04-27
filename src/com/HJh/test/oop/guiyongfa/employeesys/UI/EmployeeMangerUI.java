@@ -26,10 +26,14 @@ public class EmployeeMangerUI extends JFrame {
     private final String[] columnNames = {"员工编号", "姓名", "性别", "部门", "职位", "手机号", "入职日期", "薪资"};
 
     public EmployeeMangerUI() {
+    }
+    public EmployeeMangerUI(String  user) {
+        super("欢迎 "+user+" 进入人事系统！");
         employeeList = new ArrayList<>();
         initData(); // 初始化20条数据
         initUI();
     }
+
 
     /**
      * 初始化20条员工数据
@@ -67,7 +71,7 @@ public class EmployeeMangerUI extends JFrame {
      * 初始化界面
      */
     private void initUI() {
-        setTitle("员工信息管理系统");
+
         setSize(1000, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -128,24 +132,24 @@ public class EmployeeMangerUI extends JFrame {
         refreshTable();
 
         // ===== 右键菜单 =====
-        popupMenu = new JPopupMenu();
+        popupMenu = new JPopupMenu();// 创建右键菜单
         JMenuItem editItem = new JMenuItem("✏️ 修改");
         JMenuItem deleteItem = new JMenuItem("🗑️ 删除");
-        popupMenu.add(editItem);
-        popupMenu.addSeparator();
-        popupMenu.add(deleteItem);
+        popupMenu.add(editItem);// 添加修改菜单项
+        popupMenu.addSeparator();// 添加分割线
+        popupMenu.add(deleteItem);// 添加删除菜单项
 
         // 表格右键监听
         employeeTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 showPopup(e);
-            }
+            }// 鼠标按下时显示右键菜单
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 showPopup(e);
-            }
+            }// 鼠标释放时显示右键菜单
 
             private void showPopup(MouseEvent e) {
                 if (e.isPopupTrigger()) {

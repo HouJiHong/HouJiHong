@@ -102,9 +102,32 @@ public class LoginUi extends JFrame implements ActionListener {
         if(e.getSource()==login){
             login();
         }else{
-            System.out.println("注册按钮被点击了");
+            register();
         }
     }
+
+    //注册逻辑
+    private void register() {
+        String username = this.username.getText();
+        String password = new String(this.password.getPassword());
+        if(username.isEmpty()||password.isEmpty()){
+            JOptionPane.showMessageDialog(this,"用户名或密码不能为空");
+        }else{
+            User user = getUserByLoginName(username);
+            if(user!=null){
+                JOptionPane.showMessageDialog(this,"用户已存在");
+            }else{
+                allUsers.add(new User(username,password,username));
+                JOptionPane.showMessageDialog(this,"注册成功");
+            }
+        }
+
+    }
+
+
+
+
+    //登录逻辑
     private void login(){
         String username = this.username.getText();
         String password = new String(this.password.getPassword());
@@ -114,7 +137,7 @@ public class LoginUi extends JFrame implements ActionListener {
         }else if(!user.getPassword().equals(password)){
             JOptionPane.showMessageDialog(this,"密码错误");
         }else{
-            EmployeeMangerUI employeeUI = new EmployeeMangerUI();
+            EmployeeMangerUI employeeUI = new EmployeeMangerUI(user.getUsername());
             employeeUI.setVisible(true);
             this.dispose(); //关闭当前窗口
         }
@@ -128,6 +151,9 @@ public class LoginUi extends JFrame implements ActionListener {
         }
         return null;
     }
+
+
+
 
 
 
