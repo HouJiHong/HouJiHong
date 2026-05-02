@@ -2,7 +2,7 @@ package com.HJh.test.oop.jihe.jiheyongfa;
 
 import java.util.ArrayList;
 //集合就是容器，可以增加，减少容器的大小
-
+//集合分为两类，一类是单列集合collection，一类是双列集合map
 
 //ArrayList集合
 //空参构造：
@@ -15,6 +15,10 @@ import java.util.ArrayList;
 //E set(int index,E e)      修改元素
 //E get(int index)          获取元素
 //int size()                集合长度
+//boolean contains(E e)     判断集合中是否包含某个元素
+//void clear()              清空集合
+//boolean isEmpty()         判断集合是否为空
+
 public class test {
     public static void main(String[] args) {
         //1.创建一个长度为e的ArrayList集合
