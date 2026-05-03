@@ -2,6 +2,8 @@ package com.HJh.test.oop.jihe.collectionjiazu;
 //Collection集合特点(接口)
 //List系列集合：添加的元素是有序、可重复、有索引。(接口)
     //ArrayList、LinekdList：有序、可重复、有索引。（实现类）
+    //ArrayList是基于数组实现的，查询快，增删慢。 在添加元素的时候默认扩容1.5倍。
+    //LinkedList是基于双链表实现的，查询慢，增删快。
 
 import java.util.ArrayList;
 import java.util.HashSet;

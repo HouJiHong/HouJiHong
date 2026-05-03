@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 public class test {
     public static void main(String[] args) {
         //1.迭代器遍历
+        //没有索引也可以用
         Collection<String> list = new ArrayList<>();
         list.add("hello");
         list.add("world");

@@ -1,4 +1,4 @@
-package com.HJh.test.oop.jihe.jiheyongfa;
+package com.HJh.test.oop.jihe.listyongfa;
 
 import java.util.ArrayList;
 //集合就是容器，可以增加，减少容器的大小
