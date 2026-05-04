@@ -4,7 +4,7 @@ import java.util.ArrayList;
 //集合就是容器，可以增加，减少容器的大小
 //集合分为两类，一类是单列集合collection，一类是双列集合map
 
-//ArrayList集合
+//ArrayList集合       在添加元素的时候才默认扩容1.5倍。初始长度为10
 //空参构造：
 //ArrayList()               创建一个长度为e的集合
 //常见方法：
