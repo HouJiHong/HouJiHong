@@ -1,10 +1,9 @@
-package com.HJh.test.oop.jihe.bianliqubie;
+package com.HJh.test.oop.jihe.collectionjiazu.bianliqubie;
 
 //遍历集合的同时又存在增删集合元素的行为时可能出现业务异常，这种现象被称之为并发修改异常问题。
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class test {
     public static void main(String[] args) {

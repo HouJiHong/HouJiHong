@@ -13,6 +13,9 @@ import java.util.Set;
 //Set系列集合：添加的元素是无序、不重复、无索引。(接口)
     //HashSet:无序、不重复、无索引；（实现类）
     //LinkedHashSet:有序、不重复、无索引。（实现类）
+            //依然是基于哈希表（数组、链表、红黑树)实现的。
+            //但是，它的每个元素都额外的多了一个双链表的机制记录它前后元素的位置。
+
     //TreeSet：按照大小默认升序排序、不重复、无索引。（实现类）
 
 
@@ -26,7 +29,7 @@ import java.util.Set;
     //public Object[] toArray()             把集合中的元素，存储到数组中
 
 
-public class test {
+public class CollectionTest {
     public static void main(String[] args) {
         //List家族的集合：添加的元素是有序、可重复、有索引。
         List<String> list = new ArrayList<>();

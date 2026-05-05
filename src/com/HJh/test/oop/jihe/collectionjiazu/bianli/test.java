@@ -1,9 +1,8 @@
-package com.HJh.test.oop.jihe.bianli;
+package com.HJh.test.oop.jihe.collectionjiazu.bianli;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class test {
     public static void main(String[] args) {

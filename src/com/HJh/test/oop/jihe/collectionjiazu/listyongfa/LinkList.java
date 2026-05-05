@@ -1,4 +1,4 @@
-package com.HJh.test.oop.jihe.listyongfa;
+package com.HJh.test.oop.jihe.collectionjiazu.listyongfa;
 
 import java.util.LinkedList;
 

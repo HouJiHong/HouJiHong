@@ -1,4 +1,4 @@
-package com.HJh.test.oop.jihe.setyongfa;
+package com.HJh.test.oop.jihe.collectionjiazu.setyongfa;
 //Java中的所有对象都可以调用Object类提供的hashCode方法，返回该对象自己的哈希值
 //hashSet用哈希表存储数据
 //jdk8前哈希表：数组+链表
