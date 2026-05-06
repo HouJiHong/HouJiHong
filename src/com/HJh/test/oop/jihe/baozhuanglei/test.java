@@ -52,14 +52,14 @@ public class test {
         //1.把基本数据类型转换成字符串类型
         int i5 = 100;
         String s = Integer.toString(i5);//"100"
-        System.out.println(s+1);//101
+        System.out.println(s+1);//1001
 
         Integer i6 = i5;
         String s2 = i6.toString();//"100"
-        System.out.println(s2+1);//101
+        System.out.println(s2+1);//1001
 
         String s3 = i5+ "";
-        System.out.println(s3+1);//101
+        System.out.println(s3+1);//1001
         System.out.println("-----------------------------------");
 
         //2.把字符串类型的数值转换成数值本身对应真实的数据类型
@@ -67,7 +67,7 @@ public class test {
         //int i7 = Integer.parseInt(s4);
         int i7 = Integer.valueOf(s4);   //用valueOf()将字符串转换成对象，然后自动拆箱成基本数据类型
         System.out.println(i7+1);
-        double d = Double.valueOf(s4);
+        double d = Double.valueOf(s4);//124
 
 
         /*需求：定义一个集合，添加数字，并进行遍历。

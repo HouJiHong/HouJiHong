@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-//注意：Map系列集合的特点都是由键决定的，值只是一个附属品，值是不做要求的，可以重复
+//注意：Map系列集合的特点都是由键决定的，值只是一个附属品，值是不做要求的，可以重复（本质上set系列集合，都用的是map）
 //HashMap（由键决定特点）：无序、不重复、无索引 （实现类）
 //LinkedHashMap（由键决定特点）：由键决定的特点：有序、不重复、无索引。（实现类）
 //TreeMap（由键决定特点）:按照大小默认升序排序、不重复、无索引。（实现类）
