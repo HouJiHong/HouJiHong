@@ -3,7 +3,7 @@ package com.HJh.test.oop.fileyongfa;
 //递归的公式：f(n) = f(n-1)* n;
 //递归的终结点：f(1)=1
 //递归的方向必须走向终结点
-public class diGui {
+public class DiGui {
     public static void main(String[] args) {
         //猴子吃桃,每一天吃前一天的一半多一,第十天只有一个桃子,第一天有多少桃子
         //递归公式：f(n+1) = f(n)-f(n)/2-1
