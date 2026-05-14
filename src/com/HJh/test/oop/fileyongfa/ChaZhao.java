@@ -27,7 +27,7 @@ public class ChaZhao {
             return;
         }
         File[] files = dir.listFiles();
-        //如果创建的文件对象数组为空或者长度为0，不查找
+        //如果dir是一个文件或者file数组长度为0，不查找
         if (files!=null||files.length > 0) {
             for (File file : files) {
                 if (file.isFile()){

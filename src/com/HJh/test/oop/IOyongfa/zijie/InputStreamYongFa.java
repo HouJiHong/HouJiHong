@@ -40,10 +40,14 @@ public class InputStreamYongFa {
             //每次读取多个字节，性能好，但因为读多个字节时还是存在切割字节，所以还是存在乱码
         }
 
+        is2.close();//关闭流
+
         //如果想要读取字节流不乱码，可以定义一个与文件一样大小的字节数组，作为容器，不会存在切割字节
         InputStream is3 = new FileInputStream("filecaozuo.txt");
         byte[] buffer2 = is3.readAllBytes();
         String s3 = new String(buffer2);
         System.out.println(s3);
+
+        is3.close();
     }
 }
