@@ -11,6 +11,7 @@ package com.HJh.test.oop.IOyongfa.zijie;
 //public void write(int a)                  写一个字节出去
 //public void write(byte[] buffer)          写一个字节数组出去
 //public void write(byte[] buffer ，int pos ，int len)    写一个字节数组的一部分出去。
+
 //public void close() throws IOException    关闭流。
 
 import java.io.FileNotFoundException;
