@@ -15,7 +15,7 @@ import java.io.Reader;
 public class ReaderYongFa {
     public static void main(String[] args) {
         try (
-                Reader r = new FileReader("filecaozuo.txt")
+                Reader r = new FileReader("filecaozuo.txt");
         ){
             char[] buffer = new char[3];
             int len;
