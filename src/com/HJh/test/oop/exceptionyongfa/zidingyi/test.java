@@ -13,7 +13,7 @@ public class test {
 
     private static void saveAge(int age) throws AgeIllegalException {
         if(age<0||age>=200){
-            throw new AgeIllegalException("年龄非法");
+            throw new AgeIllegalException("年龄非法123");
         }else{
             System.out.println("保存年龄成功"+ age);
         }
