@@ -38,6 +38,7 @@ public class FangFa3 {
         try {
             //6.通过get方法获取线程执行结果
             //运行到这，如果主线程发现第一个线程还没有执行完，会让出cpu，等第一个线程执行完毕后，得到结果才会往下执行！
+            //至于是怎么得到结果，不管线程顺序
             System.out.println("子线程1执行结果："+f1.get());
         } catch (Exception e) {
             e.printStackTrace();
