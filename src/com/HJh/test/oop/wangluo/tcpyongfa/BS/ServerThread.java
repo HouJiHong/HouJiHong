@@ -16,6 +16,8 @@ public class ServerThread implements Runnable{
     @Override
     public void run() {
         try {
+            //由于是B/S架构，需要输出响应报文给浏览器，所以需要使用字节输出流，而不是像传统的C/S架构，使用输入流接收数据
+            //通过Socket对象调用getOutputStream()方法得到字节输出流、完成  数据的发送
             OutputStream os = socket.getOutputStream();
             PrintStream ps = new PrintStream(os);
             ps.println("HTTP/1.1 200 OK");
