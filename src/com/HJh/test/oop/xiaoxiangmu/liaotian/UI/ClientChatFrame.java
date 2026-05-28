@@ -2,16 +2,30 @@ package com.HJh.test.oop.xiaoxiangmu.liaotian.UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.Socket;
 
 public class ClientChatFrame extends JFrame {
     private JTextArea smsContent = new JTextArea(23,50);
     private JTextArea smsSend = new JTextArea(4,40);
     public JList< String> onLineUsers = new JList<>();
     private JButton sendButton = new JButton("发送");
+    private Socket socket;
 
     public ClientChatFrame() {
         initView();
         this.setVisible( true);
+    }
+
+    public ClientChatFrame(String nickName, Socket socket) {
+        this();
+        this.setTitle("聊天室-" + nickName);
+        this.socket = socket;
+
+        //立即把客户端的socket管道交给一个独立的线程，用于专门读取服务端发送的在线人数更新和群聊消息
+        //主线程用于发送群聊消息
+        //由于要读取到线程中接收的消息，将消息放到窗口中的列表中，所以要把窗口对象this传递给线程
+        new ClientThread(socket,this).start();
+
     }
 
     private void initView() {
@@ -36,7 +50,7 @@ public class ClientChatFrame extends JFrame {
 
         //在线用户列表
         onLineUsers.setFont(font);
-        onLineUsers.setFixedCellHeight(120);//设置列表项高度
+        onLineUsers.setFixedCellHeight(20);//设置列表项高度
         onLineUsers.setVisibleRowCount(13);//设置可见行数
 
         //创建底部面板
@@ -76,5 +90,12 @@ public class ClientChatFrame extends JFrame {
         this.add(userListScrollPane, BorderLayout.EAST);
 
         this.setVisible( true);
+    }
+
+    public void updateOnLineUsers(String[] onlineUsers) {
+        //把线程中读取的在线用户列表，显示到界面中
+        onLineUsers.setListData(onlineUsers);
+
+
     }
 }

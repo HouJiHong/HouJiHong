@@ -11,12 +11,14 @@ package com.HJh.test.oop.wangluo.tcpyongfa;
 //客户端程序就是通过java.net包下的socket类来实现的。
 //public Socket(String host, int port)  根据指定的服务器ip、端口号请求与服务端建立连接，连接通过，就获得了客户端socket
 
+//public OutputStream getOutputStream()     获得字节输出流对象
+//public InputStream getInputStream()       获得字节输入流对象
+
 import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-//public OutputStream getOutputStream()     获得字节输出流对象
-//public InputStream getInputStream()       获得字节输入流对象
+
 public class TcpClient {
     public static void main(String[] args) throws Exception {
         System.out.println("客户端启动，实现一发一收..");

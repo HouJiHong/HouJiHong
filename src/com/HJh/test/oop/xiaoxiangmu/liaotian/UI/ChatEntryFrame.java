@@ -1,12 +1,18 @@
 package com.HJh.test.oop.xiaoxiangmu.liaotian.UI;
 
+import com.HJh.test.oop.xiaoxiangmu.liaotian.server.Constant;
+
 import javax.swing.*;
 import java.awt.*;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 public class ChatEntryFrame extends JFrame {
     private JTextField nickNameField; //昵称输入框
     private JButton enterButton;
     private JButton cancelButton;
+    private Socket socket;//记住当前的socket
 
     public ChatEntryFrame() {
         setTitle("局域网聊天室");
@@ -45,7 +51,7 @@ public class ChatEntryFrame extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         buttonPanel.setBackground(Color.decode("#F0F0F0"));
 
-        enterButton = new JButton("进入");
+        enterButton = new JButton("登录");
         enterButton.setFont(new Font("楷体", Font.BOLD, 16));
         enterButton.setBackground(Color.decode("#007BFF"));
         enterButton.setForeground(Color.white);
@@ -59,9 +65,38 @@ public class ChatEntryFrame extends JFrame {
         cancelButton.setBorderPainted( false);
         cancelButton.setFocusPainted( false);
 
+        //添加监听器
+        enterButton.addActionListener(e -> {
+            String nickName = nickNameField.getText();
+            if (nickName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "请输入昵称！", "提示", JOptionPane.WARNING_MESSAGE);
+            } else {
+                //与服务端建立连接
+                try {
+                    login(nickName);
+                    new ClientChatFrame(nickName, socket);
+                    this.dispose();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                
+            }
+        });
+
         buttonPanel.add(enterButton);
         buttonPanel.add(cancelButton);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
         this.setVisible( true);
+    }
+
+    private void login(String nickName) throws Exception {
+        //创建Socket对象，建立连接
+        socket = new Socket(Constant.ServerIP,Constant.Port);
+        //发送消息类型和昵称给服务端
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+        dos.writeInt(1);
+        dos.writeUTF(nickName);
+        dos.flush();
     }
 }

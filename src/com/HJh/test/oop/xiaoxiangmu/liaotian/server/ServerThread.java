@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 public class ServerThread extends Thread{
@@ -18,24 +20,50 @@ public class ServerThread extends Thread{
             //服务器接收客户端的消息可能有多种类型：1.登录消息（包含昵称）2.群聊消息3.私聊消息
             //客户端需要申明什么消息类型
             DataInputStream dis = new DataInputStream(socket.getInputStream());//接收字节输入流并包装为数据输入流
-            int type = dis.readInt();
-            switch (type) {
-                case 1:
-                    //1.登录消息,要获取昵称，并更新客户端的在线列表
-                    String nickName = dis.readUTF();
-                    Server.onLineSockets.put(socket,nickName);
-                    updateClientOnLineUserList();
-                    break;
-                case 2:
-                    //2.群聊消息，要获取内容，并把消息发送给所有在线的客户端
-                    break;
+            while (true) {
+                int type = dis.readInt();
+                switch (type) {
+                    case 1:
+                        //1.登录消息,要获取昵称，并更新客户端的在线列表
+                        String nickName = dis.readUTF();
+                        Server.onLineSockets.put(socket,nickName);
+                        updateClientOnLineUserList();
+                        break;
+                    case 2:
+                        //2.群聊消息，要获取内容，并把消息发送给所有在线的客户端
+                        String msg = dis.readUTF();
+                        sendMsgToAll(msg);
+                        break;
 
+                }
             }
         } catch (Exception e) {
-            System.out.println("浏览器下线"+socket.getInetAddress().getHostAddress()+" "+socket.getPort());
+            System.out.println("客户端下线"+socket.getInetAddress().getHostAddress()+" "+socket.getPort());
             Server.onLineSockets.remove(socket);//移除掉下线的客户端
+            updateClientOnLineUserList();
         }
 
+    }
+
+    private void sendMsgToAll(String msg) {
+        StringBuilder sb = new StringBuilder();
+        String name = Server.onLineSockets.get(socket);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss EEE a");
+        String time = now.format(dtf);
+        StringBuilder content = sb.append(name).append(" ").append( time).append("\r\n").append( msg).append("\r\n");
+        String result = content.toString();
+        for (Socket socket : Server.onLineSockets.keySet()){
+            try {
+                OutputStream outputStream = socket.getOutputStream();
+                DataOutputStream dos = new DataOutputStream(outputStream);
+                dos.writeInt(2);
+                dos.writeUTF(result);
+                dos.flush();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
     private void updateClientOnLineUserList() {
