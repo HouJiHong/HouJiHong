@@ -1,6 +1,7 @@
 package com.HJh.test.oop.xiaoxiangmu.liaotian.UI;
 
 import java.io.DataInputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 public class ClientThread extends  Thread{
@@ -26,6 +27,7 @@ public class ClientThread extends  Thread{
                         break;
                     case 2:
                         //群聊消息
+                        getMsgToChat();
                         break;
 
                 }
@@ -33,6 +35,11 @@ public class ClientThread extends  Thread{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void getMsgToChat() throws Exception {
+        String msg = dis.readUTF();
+        win.setMsgToWin(msg);
     }
 
     private void updateClientList() throws Exception {

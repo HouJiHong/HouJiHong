@@ -84,6 +84,10 @@ public class ChatEntryFrame extends JFrame {
             }
         });
 
+        cancelButton.addActionListener(e -> {
+            this.dispose();
+        });
+
         buttonPanel.add(enterButton);
         buttonPanel.add(cancelButton);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);

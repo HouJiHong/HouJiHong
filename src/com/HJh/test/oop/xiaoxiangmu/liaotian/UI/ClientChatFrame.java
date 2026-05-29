@@ -2,6 +2,8 @@ package com.HJh.test.oop.xiaoxiangmu.liaotian.UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 public class ClientChatFrame extends JFrame {
@@ -72,6 +74,12 @@ public class ClientChatFrame extends JFrame {
         buttonPanel.setBackground(Color.white);
         buttonPanel.add(sendButton);
 
+        sendButton.addActionListener(e ->  {
+            String content = smsSend.getText();
+            smsSend.setText("");
+            sendMsgToServer(content);
+        });
+
         //添加组件
         bottomPanel.add(smsSendScrollPane, BorderLayout.CENTER);//添加消息输入框
         bottomPanel.add(buttonPanel, BorderLayout.EAST);//添加按钮面板
@@ -89,7 +97,18 @@ public class ClientChatFrame extends JFrame {
         this.add(bottomPanel, BorderLayout.SOUTH);
         this.add(userListScrollPane, BorderLayout.EAST);
 
-        this.setVisible( true);
+        //this.setVisible( true);
+    }
+
+    private void sendMsgToServer(String content) {
+        try {
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+            dos.writeInt(2);
+            dos.writeUTF(content);
+            dos.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateOnLineUsers(String[] onlineUsers) {
@@ -97,5 +116,9 @@ public class ClientChatFrame extends JFrame {
         onLineUsers.setListData(onlineUsers);
 
 
+    }
+
+    public void setMsgToWin(String msg) {
+        smsContent.append(msg+"\n");
     }
 }
