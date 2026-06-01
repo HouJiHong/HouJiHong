@@ -22,6 +22,7 @@ public class FangFa2 {
 //1.创建一个实现Runnable接口的类
 class MyRunnable implements Runnable{
     //2.实现run()方法
+    @Override
     public void run(){
         for (int i = 0; i < 5; i++) {
             System.out.println("子线程："+i);

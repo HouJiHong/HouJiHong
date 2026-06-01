@@ -23,7 +23,7 @@ public class test {
         System.out.println("是否是同一实例: " + (d1 == d2));
         d1.initData("测试数据");
         d1.showMessage();
-        System.out.println("获取数据: " + d1.getData());
+        System.out.println("获取数据: " + d2.getData());
         System.out.println();
 
         // 直接使用 INSTANCE
