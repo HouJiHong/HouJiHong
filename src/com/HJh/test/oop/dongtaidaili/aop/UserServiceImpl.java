@@ -1,5 +1,6 @@
 package com.HJh.test.oop.dongtaidaili.aop;
 
+//实现类，负责程序的主要逻辑，可和接口一起添加减少程序功能
 public class UserServiceImpl implements UserService{
     @Override
     public void login(String name, String password) throws InterruptedException {

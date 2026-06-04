@@ -13,8 +13,8 @@ public class test {
         //2.为明星创建代理（创建工具类，不然太臃肿），同样要实现相同的接口
         StarService proxy = ProxyUtil.createProxy(star);
         //之后所有要明星做的事情，都通过代理对象来完成，代理会通过invoke的逻辑来调用明星的方法
-        proxy.sing("《学而不思则罔》");
-        System.out.println(proxy.dance());
+        proxy.sing("《学而不思则罔》");//会得到null
+        System.out.println(proxy.dance());//会得到字符串"表演结束"
 
 
     }

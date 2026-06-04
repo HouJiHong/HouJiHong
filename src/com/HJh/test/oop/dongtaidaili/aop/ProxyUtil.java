@@ -1,6 +1,6 @@
 package com.HJh.test.oop.dongtaidaili.aop;
 
-
+//这个代理类代码以后都可以无需修改，以后想要添加功能只需要修改接口和实现类，代理类执行程序时总是会加上代理逻辑
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
