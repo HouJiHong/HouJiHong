@@ -1,6 +1,8 @@
 package com.HJh.test.oop.guiyongfa.tuxiangchakan.UI;
 
 
+import com.HJh.test.oop.guiyongfa.tuxiangchakan.Bean.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,8 +11,35 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginUi extends JFrame implements ActionListener {
+    private static List<User> users = new ArrayList<>();
+    //查找src/com/HJh/test/oop/guiyongfa/tuxiangchakan/resource/User.txt文件，不存在就创建
+    static {
+        File file = new File("src/com/HJh/test/oop/guiyongfa/tuxiangchakan/resource/User.txt");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //读取文件,并将内容添加到users列表中
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");//读了一行数据，用逗号分隔开，存入parts数组中
+                users.add(new User(parts[0], parts[1]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(users);
+
+    }
+
     //以下四个成员变量是为了以后访问
     private JTextField username;//用户名
     private JPasswordField password;//密码
@@ -101,7 +130,7 @@ public class LoginUi extends JFrame implements ActionListener {
 
     //注册逻辑
     private void register() {
-        new RegisterUI().setVisible(true);
+        new RegisterUI(users).setVisible(true);
         this.dispose();
 
     }
@@ -129,21 +158,10 @@ public class LoginUi extends JFrame implements ActionListener {
 
     }
     private boolean validateUser(String username, String password) {
-        File file = new File("src/com/HJh/test/oop/guiyongfa/tuxiangchakan/resource/User.txt");
-        if (!file.exists()) {
-            JOptionPane.showMessageDialog(this, "用户文件不存在！", "错误", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 2 && parts[0].equals(username) && parts[1].equals(password)) {
-                    return true;
-                }
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return true;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
     }

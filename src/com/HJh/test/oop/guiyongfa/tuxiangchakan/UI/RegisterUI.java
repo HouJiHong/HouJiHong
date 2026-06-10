@@ -1,18 +1,25 @@
 package com.HJh.test.oop.guiyongfa.tuxiangchakan.UI;
 
+import com.HJh.test.oop.guiyongfa.tuxiangchakan.Bean.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterUI extends JFrame implements ActionListener {
+    private List<User> users;
+
     //用戶名，密碼
     private JTextField username;
     private JPasswordField password;
     //注冊，取消按鈕
     private JButton btnRegister;
     private JButton btnCancel;
+
 
     public RegisterUI() {
         setTitle("注冊");
@@ -25,6 +32,12 @@ public class RegisterUI extends JFrame implements ActionListener {
         getContentPane().setBackground(new Color(0, 100, 200));
         init();
     }
+
+    public RegisterUI(List<User>  users){
+        this();
+        this.users = users;
+    }
+
 
     private void init() {
         JPanel jp = new JPanel();
@@ -122,19 +135,10 @@ public class RegisterUI extends JFrame implements ActionListener {
 
     //检查用户是否存在
     private boolean isUserExists(String username) {
-        File file = new File("src/com/HJh/test/oop/guiyongfa/tuxiangchakan/resource/User.txt");
-        if (!file.exists()) return false;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length > 0 && parts[0].equals(username)) {
-                    return true;
-                }
+        for (User user : users){
+            if (user.getUsername().equals(username)){
+                return true;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
     }
