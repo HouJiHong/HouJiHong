@@ -10,5 +10,8 @@ public class test {
     public static void main(String[] args) {
         Student s1 = new Student("zhangsan", 18, "一年级");
         Teacher t1 = new Teacher("lisi", 30,"数学");
+        System.out.println("-----------------------------");
+        Teacher t2 = new Teacher();
+
     }
 }

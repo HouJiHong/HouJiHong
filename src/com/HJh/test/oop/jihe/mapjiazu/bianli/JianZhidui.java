@@ -7,6 +7,7 @@ package com.HJh.test.oop.jihe.mapjiazu.bianli;
 
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +23,15 @@ public class JianZhidui {
         //{(蜘蛛精=168.5), (牛魔王=180.5), (至尊宝=170.5), (紫霞=169.5)}
 
         Set< Map.Entry<String,Double> > entrySet = map.entrySet();
+
+        Iterator<Map.Entry<String,Double>> it = entrySet.iterator();
+        while(it.hasNext()){
+            Map.Entry<String,Double> entry = it.next();
+            if(entry.getKey().contains("紫")){
+                it.remove();
+            }
+        }
+
         for (Map.Entry<String,Double> entry : entrySet) {
             System.out.println(entry.getKey()+"---"+entry.getValue());
         }
