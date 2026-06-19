@@ -5,6 +5,7 @@ public class Car {
     int carAge;
     String carColor;
 
+    //engine修饰符是默认
     class Engine{
         String engineBrand;
         int engineUseYears;
