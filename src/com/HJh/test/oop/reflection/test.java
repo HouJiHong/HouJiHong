@@ -73,6 +73,7 @@ public class test {
         for (Constructor c : c4) {
             System.out.println(c.getName()+"("+c.getParameterCount()+")");
         }
+        System.out.println("============");
         //获取指定构造器
         Constructor c6 = c1.getConstructor();//获取无参构造器
         Constructor c7 = c1.getDeclaredConstructor(String.class);
@@ -111,6 +112,7 @@ public class test {
         for (Method m:m1) {
             System.out.println(m.getName()+"("+m.getParameterCount()+")");
         }
+        System.out.println("============");
         //获取指定成员方法
         Method setName = c1.getDeclaredMethod("setName", String.class);
         System.out.println(setName.getName()+"("+setName.getParameterCount()+")");

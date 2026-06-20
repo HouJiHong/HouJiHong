@@ -29,6 +29,7 @@ public class zhongJianFangFa {
         score.add(60.5);
         score.add(80.5);
         score.add(70.5);
+        score.add(70.5);
         int[] abc = new int[]{1,2,3,4,5};
 
         score.stream().sorted().forEach(System.out::println);//升序排序
