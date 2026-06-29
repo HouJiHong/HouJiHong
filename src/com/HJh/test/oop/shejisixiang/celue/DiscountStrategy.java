@@ -3,6 +3,7 @@ package com.HJh.test.oop.shejisixiang.celue;
 /**
  * 折扣策略接口
  */
+@FunctionalInterface
 public interface DiscountStrategy {
     /**
      * 计算最终价格
