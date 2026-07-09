@@ -1,4 +1,4 @@
-package com.hjh.test.zuoye.Em;
+package com.HJh.test.ZuoYeTest.Em;
 
 public class HourlyEmployee extends Employee {
 

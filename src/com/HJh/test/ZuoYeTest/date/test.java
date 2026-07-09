@@ -1,4 +1,4 @@
-package com.hjh.test.zuoye.date;
+package com.HJh.test.ZuoYeTest.date;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

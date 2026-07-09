@@ -1,6 +1,6 @@
 package com.HJh.test;
 
-import java.sql.SQLOutput;
+
 
 public class SanJiaoXingTest {
     //System.out.println();输出完会换行
